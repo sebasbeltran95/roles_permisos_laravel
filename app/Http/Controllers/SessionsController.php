@@ -20,7 +20,11 @@ class SessionsController extends Controller
                 'message' => 'Usuario o Contraseña erronea'
             ]);
          } else {
-            return redirect()->to('/');
+            if(auth()->user()->rol === 'admin'){
+                return redirect()->to('/admin');
+            } else {
+                return redirect()->to('/');
+            }
          }
     }
     public function destroy(){

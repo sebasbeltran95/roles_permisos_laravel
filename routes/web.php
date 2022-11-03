@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,7 @@ Route::get('/register', [RegistroController::class,'create'])
 ->name('register.index');
 Route::post('/register-insertar', [RegistroController::class,'store'])->name('register.store');
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
+// un controlador para el admin 
+Route::get('/admin', [AdminController::class,'index'])
+->middleware('auth.admin')
+->name('admin.index');
